@@ -8,6 +8,7 @@ apply plugin: 'propdeps-eclipse'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'checkstyle'
 apply from: IDE_GRADLE
+apply from: ARTIFACTORY_GRADLE
 
 group = 'org.springframework.session'
 
