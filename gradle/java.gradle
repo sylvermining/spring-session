@@ -33,6 +33,11 @@ ext.jstlDependencies = [
 		"org.apache.taglibs:taglibs-standard-jstlel:1.2.1"
 ]
 
+ext.seleniumDependencies = [
+		"org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion",
+		"org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+]
+
 repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/libs-snapshot' }

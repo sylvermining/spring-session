@@ -14,32 +14,20 @@
  * limitations under the License.
  */
 
-package sample.pages
-
-import geb.*
+package sample;
 
 /**
- * The Links Page
- *
- * @author Rob Winch
+ * @author @silvrmining
  */
-class LinkPage extends Page {
-	static url = ''
-	static at = { assert driver.title == 'Linked Page'; true}
-	static content = {
-		form { $('#navLinks') }
-		username(required:false) { $('#un').text() }
-		userMenu() {
-			if(!$('#user-menu').displayed) {
-				$('#toggle').jquery.click()
-			}
-			waitFor {
-				$('#user-menu').displayed
-			}
-		}
-		switchAccount{ un ->
-			userMenu()
-			$("#switchAccount${un}").click(HomePage)
-		}
+public class User {
+
+	private String username;
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

@@ -46,6 +46,7 @@ integrationTest {
 	dependsOn integrationTomcatRun
 	doFirst {
 		def host = 'localhost:' + integrationTomcatRun.httpPort
+		systemProperties['geb.build.port'] = integrationTomcatRun.httpPort
 		systemProperties['geb.build.baseUrl'] = 'http://'+host+'/' + integrationTomcatRun.contextPath
 		systemProperties['geb.build.reportsDir'] = 'build/geb-reports'
 	}

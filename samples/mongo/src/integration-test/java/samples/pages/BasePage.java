@@ -14,20 +14,29 @@
  * limitations under the License.
  */
 
-package sample.pages
+package samples.pages;
 
-import geb.Page
+import org.openqa.selenium.WebDriver;
 
 /**
- * The home page
- *
- * @author Rob Winch
+ * @author @silv3rmining
  */
-class HomePage extends Page {
-	static url = ''
-	static at = { assert driver.title == 'Secured Content'; true}
-	static content = {
-		username { $('#un').text() }
-		logout(to:LoginPage) { $('input[type=submit]').click() }
+public abstract class BasePage {
+
+	private static final String WEB_PORT = "server.port";
+
+	private WebDriver driver;
+
+	public BasePage(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public WebDriver getDriver() {
+		return this.driver;
+	}
+
+	public static void get(WebDriver driver, String get) {
+		String baseUrl = "http://localhost:" + System.getProperty(WEB_PORT);
+		driver.get(baseUrl + get);
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2015 the original author or authors.
+ * Copyright 2014-2016 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,25 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package sample.pages
 
-import geb.*
+package sample.pages;
+
+import org.openqa.selenium.WebDriver;
 
 /**
- * The Links Page
  *
- * @author Rob Winch
+ * @author @silv3rmining
  */
-class LoginPage extends Page {
-	static url = '/login'
-	static at = { assert driver.title == 'Login Page'; true}
-	static content = {
-		form { $('form') }
-		submit { $('input[type=submit]') }
-		login(required:false) { user='user', pass='password' ->
-			form.username = user
-			form.password = pass
-			submit.click(HomePage)
-		}
+public abstract class BasePage {
+
+	private static final String WEB_PORT = "geb.build.port";
+
+	private WebDriver driver;
+
+	public BasePage(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public WebDriver getDriver() {
+		return this.driver;
+	}
+
+	public static void get(WebDriver driver, String get) {
+		String baseUrl = "http://localhost:" + System.getProperty(WEB_PORT);
+		driver.get(baseUrl + get);
 	}
 }
